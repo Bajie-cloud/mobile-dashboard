@@ -11,7 +11,7 @@ const DraggableFloatingButton: React.FC<DraggableFloatingButtonProps> = ({ onCli
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [isAnimating, setIsAnimating] = useState(false);
   const buttonRef = useRef<HTMLDivElement>(null);
-  const dragTimeoutRef = useRef<NodeJS.Timeout>();
+  const dragTimeoutRef = useRef<number>();
 
   // 初始化位置 - 右侧中间偏下
   useEffect(() => {

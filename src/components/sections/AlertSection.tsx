@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, List, Badge, Grid } from 'antd-mobile';
+import { Card, List, Badge } from 'antd-mobile';
 import { formatCurrency, formatChangeRate } from '../../utils/format';
 import { 
   AlertTriangle, 
@@ -8,9 +8,6 @@ import {
   DollarSign, 
   AlertCircle, 
   Package,
-  Clock,
-  CheckCircle,
-  Eye,
   HelpCircle
 } from 'lucide-react';
 import MetricDefinitionModal from '../common/MetricDefinitionModal';
@@ -145,31 +142,7 @@ const AlertSection: React.FC = () => {
     }
   };
 
-  const getStatusIcon = (status: string) => {
-    switch (status) {
-      case 'pending':
-        return <Clock className="w-4 h-4 text-orange-500" />;
-      case 'investigating':
-        return <Eye className="w-4 h-4 text-blue-500" />;
-      case 'resolved':
-        return <CheckCircle className="w-4 h-4 text-green-500" />;
-      default:
-        return <Clock className="w-4 h-4 text-gray-500" />;
-    }
-  };
 
-  const getStatusText = (status: string) => {
-    switch (status) {
-      case 'pending':
-        return '待处理';
-      case 'investigating':
-        return '处理中';
-      case 'resolved':
-        return '已解决';
-      default:
-        return '未知';
-    }
-  };
 
   const formatTimestamp = (timestamp: string) => {
     const date = new Date(timestamp);
@@ -191,16 +164,7 @@ const AlertSection: React.FC = () => {
     }
   };
 
-  // 计算汇总数据
-  const summary = {
-    totalAlerts: alerts.length,
-    highLevel: alerts.filter(alert => alert.level === 'high').length,
-    mediumLevel: alerts.filter(alert => alert.level === 'medium').length,
-    lowLevel: alerts.filter(alert => alert.level === 'low').length,
-    pendingCount: alerts.filter(alert => alert.status === 'pending').length,
-    investigatingCount: alerts.filter(alert => alert.status === 'investigating').length,
-    resolvedCount: alerts.filter(alert => alert.status === 'resolved').length
-  };
+
 
   return (
     <div className="space-y-4">

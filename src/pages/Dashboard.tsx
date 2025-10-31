@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card } from 'antd-mobile';
+
 import { useNavigate } from 'react-router-dom';
 import { useDashboardStore } from '../store/dashboardStore';
 import DashboardHeader from '../components/DashboardHeader';

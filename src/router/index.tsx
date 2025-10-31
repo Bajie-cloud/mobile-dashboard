@@ -46,4 +46,6 @@ export const router = createBrowserRouter([
     path: '/manage',
     element: <ManagePage />
   }
-]);
+], {
+  basename: '/mobile-dashboard'
+});

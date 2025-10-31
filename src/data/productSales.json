@@ -1,0 +1,117 @@
+[
+  {
+    "date": "2024-01-15",
+    "categories": [
+      {
+        "name": "主食类",
+        "revenue": 1150000,
+        "revenueChangeRate": 12.8,
+        "orderCount": 28500,
+        "orderCountChangeRate": 15.2,
+        "avgPrice": 40.4,
+        "avgPriceChangeRate": -2.1
+      },
+      {
+        "name": "饮品类",
+        "revenue": 680000,
+        "revenueChangeRate": 22.5,
+        "orderCount": 45200,
+        "orderCountChangeRate": 18.7,
+        "avgPrice": 15.0,
+        "avgPriceChangeRate": 3.2
+      },
+      {
+        "name": "小食类",
+        "revenue": 520000,
+        "revenueChangeRate": 8.9,
+        "orderCount": 32100,
+        "orderCountChangeRate": 12.1,
+        "avgPrice": 16.2,
+        "avgPriceChangeRate": -2.9
+      },
+      {
+        "name": "甜品类",
+        "revenue": 380000,
+        "revenueChangeRate": 5.2,
+        "orderCount": 18900,
+        "orderCountChangeRate": 8.5,
+        "avgPrice": 20.1,
+        "avgPriceChangeRate": -3.0
+      },
+      {
+        "name": "套餐类",
+        "revenue": 320000,
+        "revenueChangeRate": -5.8,
+        "orderCount": 8950,
+        "orderCountChangeRate": -8.2,
+        "avgPrice": 35.8,
+        "avgPriceChangeRate": 2.6
+      }
+    ],
+    "topProducts": [
+      {
+        "name": "经典汉堡套餐",
+        "revenue": 185000,
+        "revenueChangeRate": 18.5,
+        "orderCount": 4250,
+        "orderCountChangeRate": 15.2
+      },
+      {
+        "name": "珍珠奶茶",
+        "revenue": 125000,
+        "revenueChangeRate": 25.8,
+        "orderCount": 8350,
+        "orderCountChangeRate": 22.1
+      },
+      {
+        "name": "炸鸡翅",
+        "revenue": 98000,
+        "revenueChangeRate": 12.3,
+        "orderCount": 5680,
+        "orderCountChangeRate": 8.9
+      },
+      {
+        "name": "薯条",
+        "revenue": 85000,
+        "revenueChangeRate": 8.7,
+        "orderCount": 6200,
+        "orderCountChangeRate": 5.3
+      },
+      {
+        "name": "可乐",
+        "revenue": 72000,
+        "revenueChangeRate": 15.2,
+        "orderCount": 7800,
+        "orderCountChangeRate": 12.8
+      },
+      {
+        "name": "鸡腿堡",
+        "revenue": 68000,
+        "revenueChangeRate": 6.9,
+        "orderCount": 3400,
+        "orderCountChangeRate": 4.2
+      },
+      {
+        "name": "冰淇淋",
+        "revenue": 55000,
+        "revenueChangeRate": 22.1,
+        "orderCount": 4100,
+        "orderCountChangeRate": 18.5
+      },
+      {
+        "name": "家庭套餐",
+        "revenue": 145000,
+        "revenueChangeRate": 12.8,
+        "orderCount": 2850,
+        "orderCountChangeRate": 9.6
+      },
+      {
+        "name": "情侣套餐",
+        "revenue": 98000,
+        "revenueChangeRate": 8.5,
+        "orderCount": 1960,
+        "orderCountChangeRate": 6.2
+      }
+    ]
+  }
+]

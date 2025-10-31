@@ -1,0 +1,96 @@
+[
+  {
+    "date": "2024-01-15",
+    "alerts": [
+      {
+        "id": "alert_001",
+        "type": "revenue_drop",
+        "level": "high",
+        "title": "营业额异常下降",
+        "description": "成都春熙路店今日营业额较昨日下降35%，需要关注",
+        "storeId": "store_156",
+        "storeName": "成都春熙路店",
+        "region": "西南区",
+        "currentValue": 3200,
+        "previousValue": 4920,
+        "changeRate": -35.0,
+        "threshold": -20.0,
+        "timestamp": "2024-01-15T14:30:00Z",
+        "status": "pending"
+      },
+      {
+        "id": "alert_002",
+        "type": "traffic_drop",
+        "level": "medium",
+        "title": "客流量显著减少",
+        "description": "重庆解放碑店客流量较昨日减少28%",
+        "storeId": "store_189",
+        "storeName": "重庆解放碑店",
+        "region": "西南区",
+        "currentValue": 180,
+        "previousValue": 250,
+        "changeRate": -28.0,
+        "threshold": -25.0,
+        "timestamp": "2024-01-15T13:45:00Z",
+        "status": "pending"
+      },
+      {
+        "id": "alert_003",
+        "type": "avg_price_drop",
+        "level": "medium",
+        "title": "客单价异常下降",
+        "description": "西安钟楼店客单价较昨日下降22%",
+        "storeId": "store_203",
+        "storeName": "西安钟楼店",
+        "region": "西北区",
+        "currentValue": 18.5,
+        "previousValue": 23.7,
+        "changeRate": -22.0,
+        "threshold": -20.0,
+        "timestamp": "2024-01-15T12:20:00Z",
+        "status": "investigating"
+      },
+      {
+        "id": "alert_004",
+        "type": "system_error",
+        "level": "high",
+        "title": "收银系统异常",
+        "description": "昆明金马碧鸡店收银系统出现故障，影响正常营业",
+        "storeId": "store_245",
+        "storeName": "昆明金马碧鸡店",
+        "region": "西南区",
+        "currentValue": 0,
+        "previousValue": 2800,
+        "changeRate": -100.0,
+        "threshold": -50.0,
+        "timestamp": "2024-01-15T11:15:00Z",
+        "status": "resolved"
+      },
+      {
+        "id": "alert_005",
+        "type": "inventory_low",
+        "level": "low",
+        "title": "库存不足预警",
+        "description": "南京新街口店主要食材库存不足，建议及时补货",
+        "storeId": "store_078",
+        "storeName": "南京新街口店",
+        "region": "华东区",
+        "currentValue": 15,
+        "previousValue": 85,
+        "changeRate": -82.4,
+        "threshold": -80.0,
+        "timestamp": "2024-01-15T10:30:00Z",
+        "status": "pending"
+      }
+    ],
+    "summary": {
+      "totalAlerts": 5,
+      "highLevel": 2,
+      "mediumLevel": 2,
+      "lowLevel": 1,
+      "pendingCount": 3,
+      "investigatingCount": 1,
+      "resolvedCount": 1
+    }
+  }
+]

@@ -1,0 +1,106 @@
+[
+  {
+    "date": "2024-01-15",
+    "topStores": [
+      {
+        "id": "store_001",
+        "name": "上海南京路店",
+        "region": "华东区",
+        "revenue": 15800,
+        "revenueChangeRate": 22.5,
+        "traffic": 680,
+        "trafficChangeRate": 18.2,
+        "avgPrice": 23.2,
+        "avgPriceChangeRate": 3.6,
+        "rank": 1,
+        "rankChange": 2
+      },
+      {
+        "id": "store_002",
+        "name": "深圳福田中心店",
+        "region": "华南区",
+        "revenue": 14200,
+        "revenueChangeRate": 15.8,
+        "traffic": 625,
+        "trafficChangeRate": 12.5,
+        "avgPrice": 22.7,
+        "avgPriceChangeRate": 2.9,
+        "rank": 2,
+        "rankChange": -1
+      },
+      {
+        "id": "store_003",
+        "name": "北京王府井店",
+        "region": "华北区",
+        "revenue": 13500,
+        "revenueChangeRate": 18.9,
+        "traffic": 590,
+        "trafficChangeRate": 15.2,
+        "avgPrice": 22.9,
+        "avgPriceChangeRate": 3.2,
+        "rank": 3,
+        "rankChange": 1
+      },
+      {
+        "id": "store_004",
+        "name": "广州天河店",
+        "region": "华南区",
+        "revenue": 12800,
+        "revenueChangeRate": 8.5,
+        "traffic": 580,
+        "trafficChangeRate": 5.8,
+        "avgPrice": 22.1,
+        "avgPriceChangeRate": 2.6,
+        "rank": 4,
+        "rankChange": 0
+      },
+      {
+        "id": "store_005",
+        "name": "杭州西湖店",
+        "region": "华东区",
+        "revenue": 11900,
+        "revenueChangeRate": 12.3,
+        "traffic": 520,
+        "trafficChangeRate": 8.9,
+        "avgPrice": 22.9,
+        "avgPriceChangeRate": 3.1,
+        "rank": 5,
+        "rankChange": -2
+      }
+    ],
+    "performanceTiers": [
+      {
+        "tier": "S级门店",
+        "count": 85,
+        "countChange": 8,
+        "avgRevenue": 12500,
+        "avgRevenueChangeRate": 18.5,
+        "revenueThreshold": 10000
+      },
+      {
+        "tier": "A级门店",
+        "count": 285,
+        "countChange": 15,
+        "avgRevenue": 7800,
+        "avgRevenueChangeRate": 12.3,
+        "revenueThreshold": 6000
+      },
+      {
+        "tier": "B级门店",
+        "count": 520,
+        "countChange": -8,
+        "avgRevenue": 4200,
+        "avgRevenueChangeRate": 5.8,
+        "revenueThreshold": 3000
+      },
+      {
+        "tier": "C级门店",
+        "count": 360,
+        "countChange": -12,
+        "avgRevenue": 1800,
+        "avgRevenueChangeRate": -2.5,
+        "revenueThreshold": 0
+      }
+    ]
+  }
+]

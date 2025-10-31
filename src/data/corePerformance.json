@@ -1,0 +1,29 @@
+[
+  {
+    "date": "2024-01-15",
+    "activeStores": 1250,
+    "activeStoresChange": 8,
+    "totalRevenue": 2850000,
+    "totalRevenueChangeRate": 12.5,
+    "avgStoreRevenue": 2280,
+    "avgStoreRevenueChangeRate": 8.3
+  },
+  {
+    "date": "2024-01-14",
+    "activeStores": 1242,
+    "activeStoresChange": 5,
+    "totalRevenue": 2532000,
+    "totalRevenueChangeRate": 8.2,
+    "avgStoreRevenue": 2040,
+    "avgStoreRevenueChangeRate": 5.1
+  },
+  {
+    "date": "2024-01-13",
+    "activeStores": 1237,
+    "activeStoresChange": -2,
+    "totalRevenue": 2340000,
+    "totalRevenueChangeRate": -3.5,
+    "avgStoreRevenue": 1892,
+    "avgStoreRevenueChangeRate": -1.8
+  }
+]

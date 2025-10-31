@@ -1,0 +1,41 @@
+[
+  {
+    "date": "2024-01-15",
+    "dineInRatio": 65.2,
+    "takeoutRatio": 34.8,
+    "dineInTraffic": 45680,
+    "dineInTrafficChangeRate": 15.2,
+    "dineInAvgPrice": 42.5,
+    "dineInAvgPriceChange": 2.8,
+    "takeoutOrders": 18950,
+    "takeoutOrdersChangeRate": 22.1,
+    "takeoutAvgPrice": 52.3,
+    "takeoutAvgPriceChange": 3.2
+  },
+  {
+    "date": "2024-01-14",
+    "dineInRatio": 67.8,
+    "takeoutRatio": 32.2,
+    "dineInTraffic": 39650,
+    "dineInTrafficChangeRate": 8.5,
+    "dineInAvgPrice": 39.7,
+    "dineInAvgPriceChange": 1.2,
+    "takeoutOrders": 15520,
+    "takeoutOrdersChangeRate": 18.3,
+    "takeoutAvgPrice": 49.1,
+    "takeoutAvgPriceChange": 2.1
+  },
+  {
+    "date": "2024-01-13",
+    "dineInRatio": 69.1,
+    "takeoutRatio": 30.9,
+    "dineInTraffic": 36520,
+    "dineInTrafficChangeRate": -5.2,
+    "dineInAvgPrice": 38.5,
+    "dineInAvgPriceChange": -1.5,
+    "takeoutOrders": 13120,
+    "takeoutOrdersChangeRate": -8.7,
+    "takeoutAvgPrice": 47.0,
+    "takeoutAvgPriceChange": -2.3
+  }
+]

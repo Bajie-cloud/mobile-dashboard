@@ -1,0 +1,39 @@
+[
+  {
+    "date": "2024-01-15",
+    "regions": [
+      {
+        "name": "华东区",
+        "revenue": 1250000,
+        "revenueChangeRate": 18.5,
+        "storeCount": 485,
+        "avgStoreRevenue": 2577,
+        "avgStoreRevenueChangeRate": 12.3
+      },
+      {
+        "name": "华南区",
+        "revenue": 680000,
+        "revenueChangeRate": 8.2,
+        "storeCount": 285,
+        "avgStoreRevenue": 2386,
+        "avgStoreRevenueChangeRate": 5.8
+      },
+      {
+        "name": "华北区",
+        "revenue": 520000,
+        "revenueChangeRate": 15.7,
+        "storeCount": 225,
+        "avgStoreRevenue": 2311,
+        "avgStoreRevenueChangeRate": 9.2
+      },
+      {
+        "name": "西南区",
+        "revenue": 400000,
+        "revenueChangeRate": -2.1,
+        "storeCount": 255,
+        "avgStoreRevenue": 1569,
+        "avgStoreRevenueChangeRate": -5.8
+      }
+    ]
+  }
+]

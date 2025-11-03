@@ -1,9 +1,9 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Card } from 'antd-mobile';
 import * as echarts from 'echarts';
 import { TrendingUp, TrendingDown } from 'lucide-react';
 import { useDashboardStore } from '../../store/dashboardStore';
-import { formatCurrency, formatChangeRate, getChangeColorClass, isPositiveChange } from '../../utils/format';
+import { formatChangeRate, isPositiveChange } from '../../utils/format';
 
 interface ChannelAnalysisSectionProps {
   detailed?: boolean;

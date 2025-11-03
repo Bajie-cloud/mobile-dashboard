@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Grid } from 'antd-mobile';
 import { TrendingUp, TrendingDown } from 'lucide-react';
 import { useDashboardStore } from '../../store/dashboardStore';
-import { formatCurrency, formatChangeRate, isPositiveChange } from '../../utils/format';
+import { formatChangeRate, isPositiveChange } from '../../utils/format';
 
 const CorePerformanceSection: React.FC = () => {
   const { corePerformance } = useDashboardStore();
@@ -23,7 +23,7 @@ const CorePerformanceSection: React.FC = () => {
 
 
   // 渲染单个指标卡片
-  const renderMetricCard = (title: string, value: number, changeRate?: number, unit?: string, metricId?: string) => {
+  const renderMetricCard = (title: string, value: number, changeRate?: number, unit?: string) => {
     const hasChange = changeRate !== undefined;
     const isPositive = hasChange ? isPositiveChange(changeRate) : false;
 
@@ -80,17 +80,14 @@ const CorePerformanceSection: React.FC = () => {
               '在营门店数',
               corePerformance.activeStores.value,
               corePerformance.activeStores.changeRate,
-              '家',
-              'active_stores'
+              '家'
             )}
           </Grid.Item>
           <Grid.Item>
             {renderMetricCard(
               '当日总营业额',
               corePerformance.totalRevenue.value,
-              corePerformance.totalRevenue.changeRate,
-              undefined,
-              'total_revenue'
+              corePerformance.totalRevenue.changeRate
             )}
           </Grid.Item>
           <Grid.Item>
@@ -98,8 +95,7 @@ const CorePerformanceSection: React.FC = () => {
               '日店均营业额',
               corePerformance.avgStoreRevenue.value,
               corePerformance.avgStoreRevenue.changeRate,
-              '元',
-              'avg_store_revenue'
+              '元'
             )}
           </Grid.Item>
         </Grid>

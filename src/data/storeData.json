@@ -1,0 +1,146 @@
+{
+  "华东区": [
+    {
+      "id": "store_001",
+      "name": "上海南京路店",
+      "province": "上海市",
+      "city": "上海市",
+      "revenue": 85000,
+      "address": "南京路步行街128号"
+    },
+    {
+      "id": "store_002", 
+      "name": "杭州西湖店",
+      "province": "浙江省",
+      "city": "杭州市",
+      "revenue": 72000,
+      "address": "西湖区文三路88号"
+    },
+    {
+      "id": "store_003",
+      "name": "南京新街口店", 
+      "province": "江苏省",
+      "city": "南京市",
+      "revenue": 68000,
+      "address": "新街口中央商场B1层"
+    },
+    {
+      "id": "store_004",
+      "name": "苏州观前街店",
+      "province": "江苏省", 
+      "city": "苏州市",
+      "revenue": 65000,
+      "address": "观前街太监弄18号"
+    },
+    {
+      "id": "store_005",
+      "name": "宁波天一广场店",
+      "province": "浙江省",
+      "city": "宁波市", 
+      "revenue": 58000,
+      "address": "天一广场东区2楼"
+    }
+  ],
+  "华南区": [
+    {
+      "id": "store_006",
+      "name": "深圳华强北店",
+      "province": "广东省",
+      "city": "深圳市",
+      "revenue": 78000,
+      "address": "华强北路赛格广场3楼"
+    },
+    {
+      "id": "store_007",
+      "name": "广州天河城店",
+      "province": "广东省", 
+      "city": "广州市",
+      "revenue": 75000,
+      "address": "天河路208号天河城4楼"
+    },
+    {
+      "id": "store_008",
+      "name": "厦门中山路店",
+      "province": "福建省",
+      "city": "厦门市",
+      "revenue": 62000,
+      "address": "中山路步行街56号"
+    },
+    {
+      "id": "store_009",
+      "name": "海口国贸店",
+      "province": "海南省",
+      "city": "海口市", 
+      "revenue": 45000,
+      "address": "国贸大道帝国大厦1楼"
+    }
+  ],
+  "华北区": [
+    {
+      "id": "store_010",
+      "name": "北京王府井店",
+      "province": "北京市",
+      "city": "北京市",
+      "revenue": 92000,
+      "address": "王府井大街138号"
+    },
+    {
+      "id": "store_011",
+      "name": "天津滨江道店",
+      "province": "天津市",
+      "city": "天津市",
+      "revenue": 55000,
+      "address": "滨江道恒隆广场2楼"
+    },
+    {
+      "id": "store_012",
+      "name": "石家庄中山路店",
+      "province": "河北省",
+      "city": "石家庄市",
+      "revenue": 48000,
+      "address": "中山东路勒泰中心B1层"
+    },
+    {
+      "id": "store_013",
+      "name": "太原柳巷店",
+      "province": "山西省",
+      "city": "太原市",
+      "revenue": 42000,
+      "address": "柳巷南路铜锣湾3楼"
+    }
+  ],
+  "西南区": [
+    {
+      "id": "store_014",
+      "name": "成都春熙路店",
+      "province": "四川省",
+      "city": "成都市",
+      "revenue": 70000,
+      "address": "春熙路伊藤洋华堂4楼"
+    },
+    {
+      "id": "store_015",
+      "name": "重庆解放碑店",
+      "province": "重庆市",
+      "city": "重庆市",
+      "revenue": 65000,
+      "address": "解放碑步行街大都会广场6楼"
+    },
+    {
+      "id": "store_016",
+      "name": "昆明金马碧鸡店",
+      "province": "云南省",
+      "city": "昆明市",
+      "revenue": 38000,
+      "address": "金马碧鸡坊正义路88号"
+    },
+    {
+      "id": "store_017",
+      "name": "贵阳喷水池店",
+      "province": "贵州省",
+      "city": "贵阳市",
+      "revenue": 35000,
+      "address": "喷水池国贸广场3楼"
+    }
+  ]
+}

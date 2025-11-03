@@ -90,141 +90,100 @@ const ProductAnalysisSection: React.FC = () => {
 
   // 分离单品和套餐数据
   const singleItems = productSales.topProducts.filter(product => !product.name.includes('套餐')).slice(0, 5);
-  const comboItems = productSales.topProducts.filter(product => product.name.includes('套餐')).slice(0, 3);
+  const comboItems = productSales.topProducts.filter(product => product.name.includes('套餐')).slice(0, 5);
 
   return (
     <div className="space-y-3">
       {/* 菜品分析 - 合并的卡片 */}
-      <Card className="mx-3">
-        <div className="p-3">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center">
-              <h2 className="text-base font-semibold text-gray-900">菜品分析</h2>
-              <HelpCircle 
-                className="w-3 h-3 ml-1 text-blue-500 cursor-pointer hover:text-blue-600" 
-                onClick={(e) => handleMetricHelp('product_analysis', e)}
-              />
+      <div className="mb-3">
+        <div className="bg-white rounded-lg shadow-sm border border-gray-100">
+          <div className="py-3">
+            <div className="flex items-center justify-between mb-3 px-3">
+              <div className="flex items-center">
+                <h2 className="text-base font-semibold text-gray-900">菜品分析</h2>
+                <HelpCircle 
+                  className="w-3 h-3 ml-1 text-yellow-500 cursor-pointer hover:text-yellow-600" 
+                  onClick={(e) => handleMetricHelp('product_analysis', e)}
+                />
+              </div>
+              <span className="text-xs text-gray-600">当日销量排名</span>
             </div>
-            <span className="text-xs text-gray-600">当日销量排名</span>
-          </div>
+            
+            <div className="-mx-3">
+              <div className="px-3">
           
           <Tabs className="compact-tabs">
             <Tabs.Tab title="Top5单品" key="single-products">
               <div className="space-y-2 mt-3">
                 {singleItems.map((product, index) => (
-                  <div key={product.name} className="border border-gray-200 rounded-lg p-3">
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="flex items-center space-x-2">
-                        <div className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-100">
-                          <Package className="w-3 h-3 text-blue-600" />
+                  <div key={product.name} className="border border-gray-200 rounded-lg p-2">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2 flex-1 min-w-0">
+                        <div className="flex items-center justify-center w-5 h-5 rounded-full bg-yellow-100 flex-shrink-0">
+                          <Package className="w-2.5 h-2.5 text-yellow-600" />
                         </div>
-                        <span className="text-sm font-medium text-gray-900 truncate">{product.name}</span>
-                        <span className="text-xs font-bold text-blue-600">TOP {index + 1}</span>
+                        <div className="flex items-center space-x-1 flex-1 min-w-0">
+                          <span className="text-sm font-medium text-gray-900 truncate">{product.name}</span>
+                          <span className="text-xs font-bold text-yellow-600 flex-shrink-0">TOP {index + 1}</span>
+                        </div>
                       </div>
-                      <div className={`flex items-center text-xs ${getChangeColorClass(product.revenueChangeRate)}`}>
-                        {isPositiveChange(product.revenueChangeRate) ? (
-                          <TrendingUp className="w-3 h-3 mr-1" />
-                        ) : (
-                          <TrendingDown className="w-3 h-3 mr-1" />
-                        )}
-                        <span>{formatChangeRate(product.revenueChangeRate)}</span>
+                      <div className="text-right">
+                        <div className="text-base font-bold text-gray-900">
+                          {product.orderCount.toLocaleString()}份
+                        </div>
+                        <div className={`flex items-center text-xs justify-end ${getChangeColorClass(product.revenueChangeRate)}`}>
+                          {isPositiveChange(product.revenueChangeRate) ? (
+                            <TrendingUp className="w-3 h-3 mr-0.5" />
+                          ) : (
+                            <TrendingDown className="w-3 h-3 mr-0.5" />
+                          )}
+                          <span>{formatChangeRate(product.revenueChangeRate)}</span>
+                        </div>
                       </div>
                     </div>
-                    
-                    <Grid columns={2} gap={8}>
-                      <Grid.Item>
-                        <div className="text-center">
-                          <div className="text-xs text-gray-500 mb-1 flex items-center justify-center">
-                            <span>营业额</span>
-                            <HelpCircle 
-                              className="w-3 h-3 ml-1 text-blue-500 cursor-pointer hover:text-blue-600" 
-                              onClick={(e) => handleMetricHelp('product_revenue', e)}
-                            />
-                          </div>
-                          <div className="text-sm font-bold text-gray-900">
-                            {formatCurrency(product.revenue)}
-                          </div>
-                        </div>
-                      </Grid.Item>
-                      <Grid.Item>
-                        <div className="text-center">
-                          <div className="text-xs text-gray-500 mb-1 flex items-center justify-center">
-                            <span>销量</span>
-                            <HelpCircle 
-                              className="w-3 h-3 ml-1 text-blue-500 cursor-pointer hover:text-blue-600" 
-                              onClick={(e) => handleMetricHelp('product_sales_volume', e)}
-                            />
-                          </div>
-                          <div className="text-sm font-bold text-gray-900">
-                            {product.orderCount.toLocaleString()}份
-                          </div>
-                        </div>
-                      </Grid.Item>
-                    </Grid>
                   </div>
                 ))}
               </div>
             </Tabs.Tab>
 
-            <Tabs.Tab title="Top3套餐" key="combo-products">
+            <Tabs.Tab title="Top5套餐" key="combo-products">
               <div className="space-y-2 mt-3">
                 {comboItems.map((product, index) => (
-                  <div key={product.name} className="border border-gray-200 rounded-lg p-3">
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="flex items-center space-x-2">
-                        <div className="flex items-center justify-center w-6 h-6 rounded-full bg-orange-100">
-                          <Award className="w-3 h-3 text-orange-600" />
+                  <div key={product.name} className="border border-gray-200 rounded-lg p-2">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2 flex-1 min-w-0">
+                        <div className="flex items-center justify-center w-5 h-5 rounded-full bg-orange-100 flex-shrink-0">
+                          <Award className="w-2.5 h-2.5 text-orange-600" />
                         </div>
-                        <span className="text-sm font-medium text-gray-900 truncate">{product.name}</span>
-                        <span className="text-xs font-bold text-orange-600">TOP {index + 1}</span>
+                        <div className="flex items-center space-x-1 flex-1 min-w-0">
+                          <span className="text-sm font-medium text-gray-900 truncate">{product.name}</span>
+                          <span className="text-xs font-bold text-orange-600 flex-shrink-0">TOP {index + 1}</span>
+                        </div>
                       </div>
-                      <div className={`flex items-center text-xs ${getChangeColorClass(product.revenueChangeRate)}`}>
-                        {isPositiveChange(product.revenueChangeRate) ? (
-                          <TrendingUp className="w-3 h-3 mr-1" />
-                        ) : (
-                          <TrendingDown className="w-3 h-3 mr-1" />
-                        )}
-                        <span>{formatChangeRate(product.revenueChangeRate)}</span>
+                      <div className="text-right">
+                        <div className="text-base font-bold text-gray-900">
+                          {product.orderCount.toLocaleString()}份
+                        </div>
+                        <div className={`flex items-center text-xs justify-end ${getChangeColorClass(product.revenueChangeRate)}`}>
+                          {isPositiveChange(product.revenueChangeRate) ? (
+                            <TrendingUp className="w-3 h-3 mr-0.5" />
+                          ) : (
+                            <TrendingDown className="w-3 h-3 mr-0.5" />
+                          )}
+                          <span>{formatChangeRate(product.revenueChangeRate)}</span>
+                        </div>
                       </div>
                     </div>
-                    
-                    <Grid columns={2} gap={8}>
-                      <Grid.Item>
-                        <div className="text-center">
-                          <div className="text-xs text-gray-500 mb-1 flex items-center justify-center">
-                            <span>营业额</span>
-                            <HelpCircle 
-                              className="w-3 h-3 ml-1 text-blue-500 cursor-pointer hover:text-blue-600" 
-                              onClick={(e) => handleMetricHelp('product_revenue', e)}
-                            />
-                          </div>
-                          <div className="text-sm font-bold text-gray-900">
-                            {formatCurrency(product.revenue)}
-                          </div>
-                        </div>
-                      </Grid.Item>
-                      <Grid.Item>
-                        <div className="text-center">
-                          <div className="text-xs text-gray-500 mb-1 flex items-center justify-center">
-                            <span>销量</span>
-                            <HelpCircle 
-                              className="w-3 h-3 ml-1 text-blue-500 cursor-pointer hover:text-blue-600" 
-                              onClick={(e) => handleMetricHelp('product_sales_volume', e)}
-                            />
-                          </div>
-                          <div className="text-sm font-bold text-gray-900">
-                            {product.orderCount.toLocaleString()}份
-                          </div>
-                        </div>
-                      </Grid.Item>
-                    </Grid>
                   </div>
                 ))}
               </div>
             </Tabs.Tab>
           </Tabs>
+              </div>
+            </div>
+          </div>
         </div>
-      </Card>
+      </div>
 
       {/* 指标定义弹窗 */}
       <MetricDefinitionModal

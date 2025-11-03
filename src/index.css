@@ -226,3 +226,23 @@ html, body {
 .section-tag.red {
   @apply text-red-600 bg-red-50;
 }
+
+/* antd-mobile Tabs 自定义样式 - 将选中颜色改为黄色 */
+.adm-tabs-tab-active {
+  color: #F59E0B !important; /* 黄色文字 */
+}
+
+.adm-tabs-tab-line {
+  background-color: #F59E0B !important; /* 黄色下划线 */
+}
+
+/* 紧凑型标签页样式 */
+.compact-tabs .adm-tabs-tab {
+  padding: 8px 12px !important;
+  font-size: 14px !important;
+}
+
+.compact-tabs .adm-tabs-tab-active {
+  color: #F59E0B !important;
+  font-weight: 600 !important;
+}

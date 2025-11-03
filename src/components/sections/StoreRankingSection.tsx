@@ -56,18 +56,22 @@ const StoreRankingSection: React.FC = () => {
 
   return (
     <div className="space-y-3">
-      <Card className="mx-3">
-        <div className="p-3">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center">
-              <h2 className="text-base font-semibold text-gray-900">门店梯度表现</h2>
-              <HelpCircle 
-                className="w-3 h-3 ml-1 text-blue-500 cursor-pointer hover:text-blue-600" 
-                onClick={(e) => handleMetricHelp('store_ranking', e)}
-              />
+      <div className="mb-3">
+        <div className="bg-white rounded-lg shadow-sm border border-gray-100">
+          <div className="py-3">
+            <div className="flex items-center justify-between mb-3 px-3">
+              <div className="flex items-center">
+                <h2 className="text-base font-semibold text-gray-900">门店梯度表现</h2>
+                <HelpCircle 
+                  className="w-3 h-3 ml-1 text-yellow-500 cursor-pointer hover:text-yellow-600" 
+                  onClick={(e) => handleMetricHelp('store_ranking', e)}
+                />
+              </div>
+              <span className="text-xs text-yellow-600">当日营业额排名</span>
             </div>
-            <span className="text-xs text-blue-600">当日营业额排名</span>
-          </div>
+            
+            <div className="-mx-3">
+              <div className="px-3">
           
           <Tabs className="compact-tabs">
             <Tabs.Tab title="top10门店" key="top-stores">
@@ -92,7 +96,7 @@ const StoreRankingSection: React.FC = () => {
                       <div className="text-sm font-bold text-gray-900 flex items-center">
                         <span>{formatCurrency(store.revenue)}</span>
                         <HelpCircle 
-                          className="w-3 h-3 ml-1 text-blue-500 cursor-pointer hover:text-blue-600" 
+                          className="w-3 h-3 ml-1 text-yellow-500 cursor-pointer hover:text-yellow-600" 
                           onClick={(e) => handleMetricHelp('store_revenue', e)}
                         />
                       </div>
@@ -132,7 +136,7 @@ const StoreRankingSection: React.FC = () => {
                       <div className="text-sm font-bold text-gray-900 flex items-center">
                         <span>{formatCurrency(store.revenue)}</span>
                         <HelpCircle 
-                          className="w-3 h-3 ml-1 text-blue-500 cursor-pointer hover:text-blue-600" 
+                          className="w-3 h-3 ml-1 text-yellow-500 cursor-pointer hover:text-yellow-600" 
                           onClick={(e) => handleMetricHelp('store_revenue', e)}
                         />
                       </div>
@@ -150,8 +154,11 @@ const StoreRankingSection: React.FC = () => {
               </div>
             </Tabs.Tab>
           </Tabs>
+              </div>
+            </div>
+          </div>
         </div>
-      </Card>
+      </div>
 
       {/* 指标定义弹窗 */}
       <MetricDefinitionModal

@@ -99,6 +99,41 @@
         "orderCountChangeRate": 18.5
       },
       {
+        "name": "奶昔",
+        "revenue": 52000,
+        "revenueChangeRate": -3.2,
+        "orderCount": 3850,
+        "orderCountChangeRate": -1.8
+      },
+      {
+        "name": "鸡米花",
+        "revenue": 48000,
+        "revenueChangeRate": 9.8,
+        "orderCount": 4200,
+        "orderCountChangeRate": 7.5
+      },
+      {
+        "name": "蛋挞",
+        "revenue": 45000,
+        "revenueChangeRate": 14.6,
+        "orderCount": 3600,
+        "orderCountChangeRate": 11.2
+      },
+      {
+        "name": "咖啡",
+        "revenue": 42000,
+        "revenueChangeRate": 6.3,
+        "orderCount": 2800,
+        "orderCountChangeRate": 3.9
+      },
+      {
+        "name": "玉米杯",
+        "revenue": 38000,
+        "revenueChangeRate": -5.1,
+        "orderCount": 3200,
+        "orderCountChangeRate": -3.7
+      },
+      {
         "name": "家庭套餐",
         "revenue": 145000,
         "revenueChangeRate": 12.8,
@@ -111,6 +146,27 @@
         "revenueChangeRate": 8.5,
         "orderCount": 1960,
         "orderCountChangeRate": 6.2
+      },
+      {
+        "name": "儿童套餐",
+        "revenue": 78000,
+        "revenueChangeRate": 16.3,
+        "orderCount": 1850,
+        "orderCountChangeRate": 13.8
+      },
+      {
+        "name": "商务套餐",
+        "revenue": 65000,
+        "revenueChangeRate": -2.4,
+        "orderCount": 1200,
+        "orderCountChangeRate": -1.9
+      },
+      {
+        "name": "超值套餐",
+        "revenue": 58000,
+        "revenueChangeRate": 11.7,
+        "orderCount": 1680,
+        "orderCountChangeRate": 8.9
       }
     ]
   }

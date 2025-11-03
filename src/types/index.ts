@@ -131,3 +131,18 @@ export interface ChangeData {
   changeValue?: number;
   isPositive: boolean;
 }
+
+// 门店详细信息类型
+export interface StoreDetail {
+  id: string;
+  name: string;
+  province: string;
+  city: string;
+  revenue: number;
+  address: string;
+}
+
+// 区域门店数据类型
+export interface RegionStoreData {
+  [regionName: string]: StoreDetail[];
+}

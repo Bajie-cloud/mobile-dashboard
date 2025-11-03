@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Card, Grid } from 'antd-mobile';
 import * as echarts from 'echarts';
+import { useNavigate } from 'react-router-dom';
 import { useDashboardStore } from '../../store/dashboardStore';
 import { formatCurrency, formatChangeRate, getChangeColorClass, isPositiveChange } from '../../utils/format';
 import { TrendingUp, TrendingDown, MapPin, HelpCircle } from 'lucide-react';
@@ -12,12 +13,17 @@ const RegionAnalysisSection: React.FC = () => {
   const chartRef = useRef<HTMLDivElement>(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedMetric, setSelectedMetric] = useState<MetricDefinition | undefined>(undefined);
+  const navigate = useNavigate();
 
   const handleMetricHelp = (metricId: string, e: React.MouseEvent) => {
     e.stopPropagation();
     const metric = getMetricDefinition(metricId);
     setSelectedMetric(metric);
     setModalVisible(true);
+  };
+
+  const handleRegionClick = (regionName: string) => {
+    navigate(`/region-analysis/${encodeURIComponent(regionName)}`);
   };
 
   useEffect(() => {
@@ -48,7 +54,17 @@ const RegionAnalysisSection: React.FC = () => {
         data: regionAnalysis.regions.map(r => r.name),
         axisLabel: {
           fontSize: 10,
-          rotate: 0
+          rotate: 0,
+          color: '#000000'  // 设置X轴标签颜色为黑色
+        },
+        axisLine: {
+          show: true,
+          lineStyle: {
+            color: '#e5e7eb'
+          }
+        },
+        axisTick: {
+          show: false
         }
       },
       yAxis: {
@@ -58,6 +74,15 @@ const RegionAnalysisSection: React.FC = () => {
             return value >= 10000 ? (value / 10000).toFixed(0) + '万' : value.toString();
           },
           fontSize: 10
+        },
+        axisLine: {
+          show: false
+        },
+        axisTick: {
+          show: false
+        },
+        splitLine: {
+          show: false  // 去掉横线（网格线）
         }
       },
       series: [
@@ -67,18 +92,41 @@ const RegionAnalysisSection: React.FC = () => {
           data: regionAnalysis.regions.map(r => ({
             value: r.revenue,
             itemStyle: {
-              color: r.revenueChangeRate >= 0 ? '#10b981' : '#ef4444'
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                { offset: 0, color: '#F59E0B' },
+                { offset: 1, color: '#F97316' }
+              ])  // 使用黄色渐变，参考核心业绩概览板块的背景色
             }
           })),
           barWidth: '50%',
           itemStyle: {
             borderRadius: [2, 2, 0, 0]
+          },
+          label: {
+            show: true,
+            position: 'top',
+            distance: 5,
+            formatter: function(params: any) {
+              const value = params.value;
+              return value >= 10000 ? (value / 10000).toFixed(0) + '万' : value.toString();
+            },
+            fontSize: 10,
+            color: '#374151',
+            fontWeight: 'bold'
           }
         }
       ]
     };
 
     chart.setOption(option);
+
+    // 添加点击事件
+    chart.on('click', function(params: any) {
+      if (params.componentType === 'series') {
+        const regionName = params.name;
+        handleRegionClick(regionName);
+      }
+    });
 
     const handleResize = () => {
       chart.resize();
@@ -107,37 +155,50 @@ const RegionAnalysisSection: React.FC = () => {
 
   return (
     <div className="space-y-3">
-      <Card className="mx-3">
-        <div className="p-3">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center">
-              <h2 className="text-base font-semibold text-gray-900">区域分析</h2>
+      <div className="mb-3">
+        <div className="bg-white rounded-lg shadow-sm border border-gray-100">
+          <div className="py-3">
+            <div className="flex items-center justify-between mb-3 px-3">
+              <div className="flex items-center">
+                <h2 className="text-base font-semibold text-gray-900">区域分析</h2>
+              </div>
+              <div className="flex items-center">
+                <span className="text-xs text-yellow-600">营业额分布</span>
+                <HelpCircle 
+                  className="w-3 h-3 ml-1 text-yellow-500 cursor-pointer hover:text-yellow-600" 
+                  onClick={(e) => handleMetricHelp('region_revenue_distribution', e)}
+                />
+              </div>
             </div>
-            <div className="flex items-center">
-              <span className="text-xs text-blue-600">营业额分布</span>
-              <HelpCircle 
-                className="w-3 h-3 ml-1 text-blue-500 cursor-pointer hover:text-blue-600" 
-                onClick={(e) => handleMetricHelp('region_revenue_distribution', e)}
-              />
+            
+            {/* 图表区域 - 使用全宽布局 */}
+            <div className="-mx-3">
+              <div className="px-3">
+                <div ref={chartRef} style={{ width: '100%', height: '180px' }}></div>
+              </div>
             </div>
           </div>
-          
-          {/* 紧凑的图表 */}
-          <div ref={chartRef} style={{ width: '100%', height: '180px' }}></div>
         </div>
-      </Card>
+      </div>
 
       {/* 区域详情网格 */}
-      <Card className="mx-3">
-        <div className="p-3">
-          <div className="flex items-center justify-between mb-3">
-            <h3 className="text-sm font-medium text-gray-900">区域详情</h3>
-            <span className="text-xs text-gray-500">按营业额排序</span>
-          </div>
+      <div className="mb-3">
+        <div className="bg-white rounded-lg shadow-sm border border-gray-100">
+          <div className="py-3">
+            <div className="flex items-center justify-between mb-3 px-3">
+              <h3 className="text-sm font-medium text-gray-900">区域详情</h3>
+              <span className="text-xs text-gray-500">按营业额排序</span>
+            </div>
           
-          <div className="space-y-2">
-            {regionAnalysis.regions.map((region, index) => (
-              <div key={region.name} className="border border-gray-200 rounded-lg p-3">
+            <div className="-mx-3">
+              <div className="px-3">
+                <div className="space-y-2">
+                  {regionAnalysis.regions.map((region, index) => (
+                    <div 
+                      key={region.name} 
+                      className="border border-gray-200 rounded-lg p-3 cursor-pointer hover:bg-gray-50 hover:border-gray-300 transition-all duration-200"
+                      onClick={() => handleRegionClick(region.name)}
+                    >
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center space-x-2">
                     <MapPin className="w-4 h-4 text-gray-500" />
@@ -160,7 +221,7 @@ const RegionAnalysisSection: React.FC = () => {
                       <div className="text-xs text-gray-500 mb-1 flex items-center justify-center">
                         <span>营业额</span>
                         <HelpCircle 
-                          className="w-3 h-3 ml-1 text-blue-500 cursor-pointer hover:text-blue-600" 
+                          className="w-3 h-3 ml-1 text-yellow-500 cursor-pointer hover:text-yellow-600" 
                           onClick={(e) => handleMetricHelp('region_revenue', e)}
                         />
                       </div>
@@ -174,7 +235,7 @@ const RegionAnalysisSection: React.FC = () => {
                       <div className="text-xs text-gray-500 mb-1 flex items-center justify-center">
                         <span>门店数</span>
                         <HelpCircle 
-                          className="w-3 h-3 ml-1 text-blue-500 cursor-pointer hover:text-blue-600" 
+                          className="w-3 h-3 ml-1 text-yellow-500 cursor-pointer hover:text-yellow-600" 
                           onClick={(e) => handleMetricHelp('region_store_count', e)}
                         />
                       </div>
@@ -188,7 +249,7 @@ const RegionAnalysisSection: React.FC = () => {
                       <div className="text-xs text-gray-500 mb-1 flex items-center justify-center">
                         <span>店均营业额</span>
                         <HelpCircle 
-                          className="w-3 h-3 ml-1 text-blue-500 cursor-pointer hover:text-blue-600" 
+                          className="w-3 h-3 ml-1 text-yellow-500 cursor-pointer hover:text-yellow-600" 
                           onClick={(e) => handleMetricHelp('region_avg_store_revenue', e)}
                         />
                       </div>
@@ -197,22 +258,28 @@ const RegionAnalysisSection: React.FC = () => {
                       </div>
                     </div>
                   </Grid.Item>
-                </Grid>
+                    </Grid>
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
-      </Card>
+      </div>
 
       {/* 区域概览统计 */}
-      <Card className="mx-3">
-        <div className="p-3">
-          <div className="flex items-center justify-between mb-3">
-            <h3 className="text-sm font-medium text-gray-900">区域概览</h3>
-            <span className="text-xs text-gray-500">今日汇总</span>
-          </div>
-          
-          <Grid columns={2} gap={8}>
+      <div className="mb-3">
+        <div className="bg-white rounded-lg shadow-sm border border-gray-100">
+          <div className="py-3">
+            <div className="flex items-center justify-between mb-3 px-3">
+              <h3 className="text-sm font-medium text-gray-900">区域概览</h3>
+              <span className="text-xs text-gray-500">今日汇总</span>
+            </div>
+            
+            <div className="-mx-3">
+              <div className="px-3">
+                <Grid columns={2} gap={8}>
             <Grid.Item>
               <div className="text-center p-2 bg-blue-50 rounded-lg">
                 <div className="text-sm font-bold text-blue-700">
@@ -221,7 +288,7 @@ const RegionAnalysisSection: React.FC = () => {
                 <div className="text-xs text-gray-600 mt-1 flex items-center justify-center">
                   <span>覆盖区域</span>
                   <HelpCircle 
-                    className="w-3 h-3 ml-1 text-blue-500 cursor-pointer hover:text-blue-600" 
+                    className="w-3 h-3 ml-1 text-yellow-500 cursor-pointer hover:text-yellow-600" 
                     onClick={(e) => handleMetricHelp('region_coverage', e)}
                   />
                 </div>
@@ -235,15 +302,18 @@ const RegionAnalysisSection: React.FC = () => {
                 <div className="text-xs text-gray-600 mt-1 flex items-center justify-center">
                   <span>总营业额</span>
                   <HelpCircle 
-                    className="w-3 h-3 ml-1 text-blue-500 cursor-pointer hover:text-blue-600" 
+                    className="w-3 h-3 ml-1 text-yellow-500 cursor-pointer hover:text-yellow-600" 
                     onClick={(e) => handleMetricHelp('region_total_revenue', e)}
                   />
                 </div>
               </div>
-            </Grid.Item>
-          </Grid>
+                </Grid.Item>
+                </Grid>
+              </div>
+            </div>
+          </div>
         </div>
-      </Card>
+      </div>
 
       {/* 指标定义弹窗 */}
       <MetricDefinitionModal

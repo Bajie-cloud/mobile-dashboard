@@ -167,25 +167,30 @@ const AlertSection: React.FC = () => {
 
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center px-4">
-        <h2 className="text-lg font-bold text-gray-900">异常预警</h2>
-        <HelpCircle 
-          className="w-4 h-4 ml-2 text-blue-500 cursor-pointer hover:text-blue-600" 
-          onClick={(e) => handleMetricHelp('anomaly_warning', e)}
-        />
-      </div>
-      
-      {/* 预警列表 */}
-      <Card className="mx-4">
-        <div className="p-4">
-          <div className="flex items-center mb-3">
-            <h3 className="text-md font-semibold text-gray-800">预警详情</h3>
-            <HelpCircle 
-              className="w-3 h-3 ml-1 text-blue-500 cursor-pointer hover:text-blue-600" 
-              onClick={(e) => handleMetricHelp('alert_details', e)}
-            />
-          </div>
+    <div className="space-y-3">
+      <div className="mb-3">
+        <div className="bg-white rounded-lg shadow-sm border border-gray-100">
+          <div className="py-3">
+            <div className="flex items-center justify-between mb-3 px-3">
+              <div className="flex items-center">
+                <h2 className="text-base font-semibold text-gray-900">异常预警</h2>
+                <HelpCircle 
+                  className="w-3 h-3 ml-1 text-yellow-500 cursor-pointer hover:text-yellow-600" 
+                  onClick={(e) => handleMetricHelp('anomaly_warning', e)}
+                />
+              </div>
+              <span className="text-xs text-yellow-600">实时监控</span>
+            </div>
+            
+            <div className="-mx-3">
+              <div className="px-3">
+                <div className="flex items-center mb-3">
+                  <h3 className="text-md font-semibold text-gray-800">预警详情</h3>
+                  <HelpCircle 
+                    className="w-3 h-3 ml-1 text-yellow-500 cursor-pointer hover:text-yellow-600" 
+                    onClick={(e) => handleMetricHelp('alert_details', e)}
+                  />
+                </div>
           <List>
             {alerts.map((alert) => (
               <List.Item
@@ -235,11 +240,12 @@ const AlertSection: React.FC = () => {
                 </div>
               </List.Item>
             ))}
-          </List>
+                </List>
+              </div>
+            </div>
+          </div>
         </div>
-      </Card>
-
-
+      </div>
 
       {/* 指标定义弹窗 */}
       <MetricDefinitionModal

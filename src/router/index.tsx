@@ -1,6 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Dashboard from '../pages/Dashboard';
-import CorePerformanceDetail from '../pages/CorePerformanceDetail';
 import ChannelAnalysisDetail from '../pages/ChannelAnalysisDetail';
 import RegionAnalysisDetail from '../pages/RegionAnalysisDetail';
 import ProductAnalysisDetail from '../pages/ProductAnalysisDetail';
@@ -15,15 +14,15 @@ export const router = createBrowserRouter([
     element: <Dashboard />
   },
   {
-    path: '/core-performance',
-    element: <CorePerformanceDetail />
-  },
-  {
     path: '/channel-analysis',
     element: <ChannelAnalysisDetail />
   },
   {
     path: '/region-analysis',
+    element: <RegionAnalysisDetail />
+  },
+  {
+    path: '/region-analysis/:regionName',
     element: <RegionAnalysisDetail />
   },
   {

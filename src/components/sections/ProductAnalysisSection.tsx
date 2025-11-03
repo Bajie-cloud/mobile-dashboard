@@ -1,8 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Card, Grid, Tabs } from 'antd-mobile';
+import { Card, Tabs } from 'antd-mobile';
 import * as echarts from 'echarts';
 import { useDashboardStore } from '../../store/dashboardStore';
-import { formatCurrency, formatChangeRate, getChangeColorClass, isPositiveChange } from '../../utils/format';
+import { formatChangeRate, getChangeColorClass, isPositiveChange } from '../../utils/format';
 import { TrendingUp, TrendingDown, Package, Award, HelpCircle } from 'lucide-react';
 import MetricDefinitionModal from '../common/MetricDefinitionModal';
 import { MetricDefinition, getMetricDefinition } from '../../data/metricDefinitions';

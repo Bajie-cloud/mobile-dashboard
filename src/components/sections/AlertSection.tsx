@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, List, Badge } from 'antd-mobile';
+import { List, Badge } from 'antd-mobile';
 import { formatCurrency, formatChangeRate } from '../../utils/format';
 import { 
   AlertTriangle, 

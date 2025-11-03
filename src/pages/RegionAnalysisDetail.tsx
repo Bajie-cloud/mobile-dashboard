@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavBar, Card, Grid } from 'antd-mobile';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Store, MapPin, TrendingUp, TrendingDown } from 'lucide-react';
+import { Store, MapPin } from 'lucide-react';
 import { RegionStoreData, StoreDetail } from '../types';
 import { formatCurrency } from '../utils/format';
 import storeData from '../data/storeData.json';

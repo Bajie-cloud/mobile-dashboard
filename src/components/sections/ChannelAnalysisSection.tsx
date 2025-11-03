@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Card, Grid } from 'antd-mobile';
+import { Card } from 'antd-mobile';
 import * as echarts from 'echarts';
 import { TrendingUp, TrendingDown, HelpCircle } from 'lucide-react';
 import { useDashboardStore } from '../../store/dashboardStore';
@@ -269,9 +269,7 @@ const ChannelAnalysisSection: React.FC<ChannelAnalysisSectionProps> = () => {
     );
   }
 
-  // 计算堂食和外卖的金额数据
-  const dineInRevenue = channelAnalysis.dineInTraffic * channelAnalysis.dineInAvgPrice;
-  const takeoutRevenue = channelAnalysis.takeoutOrders * channelAnalysis.takeoutAvgPrice;
+
 
   return (
     <div className="mb-3">

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, Grid } from 'antd-mobile';
 import { TrendingUp, TrendingDown, HelpCircle } from 'lucide-react';
 import { useDashboardStore } from '../../store/dashboardStore';
-import { formatCurrency, formatChangeRate, getChangeColorClass, isPositiveChange } from '../../utils/format';
+import { formatCurrency, formatChangeRate, isPositiveChange } from '../../utils/format';
 import MetricDefinitionTooltip from '../common/MetricDefinitionModal';
 import { getMetricDefinition, MetricDefinition } from '../../data/metricDefinitions';
 

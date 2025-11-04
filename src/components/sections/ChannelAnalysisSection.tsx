@@ -20,7 +20,6 @@ const ChannelAnalysisSection: React.FC<ChannelAnalysisSectionProps> = () => {
     
     // 检测屏幕尺寸，判断是否为移动端
     const isMobile = window.innerWidth <= 768;
-    const isSmallMobile = window.innerWidth <= 375;
     
     const option = {
       tooltip: {

@@ -106,7 +106,7 @@ const ProductAnalysisSection: React.FC = () => {
                   onClick={(e) => handleMetricHelp('product_analysis', e)}
                 />
               </div>
-              <span className="text-xs text-gray-600">当日销量排名</span>
+              <span className="text-xs text-gray-600">当期销量排名</span>
             </div>
             
             <div className="-mx-3">

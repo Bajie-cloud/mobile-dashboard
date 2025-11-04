@@ -49,7 +49,7 @@ const StoreRankingSection: React.FC = () => {
   // 模拟末位10门店数据（实际应该从后端获取）
   const bottomStores = storeRanking.topStores.slice().reverse().slice(0, 10).map((store, index) => ({
     ...store,
-    rank: storeRanking.topStores.length - index,
+    rank: index + 1,
     revenue: store.revenue * 0.3, // 模拟较低的营业额
     revenueChangeRate: store.revenueChangeRate * -1 // 模拟负增长
   }));
@@ -67,7 +67,7 @@ const StoreRankingSection: React.FC = () => {
                   onClick={(e) => handleMetricHelp('store_ranking', e)}
                 />
               </div>
-              <span className="text-xs text-yellow-600">当日营业额排名</span>
+              <span className="text-xs text-yellow-600">当期营业额排名</span>
             </div>
             
             <div className="-mx-3">

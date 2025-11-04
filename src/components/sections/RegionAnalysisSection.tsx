@@ -279,30 +279,30 @@ const RegionAnalysisSection: React.FC = () => {
             
             <div className="-mx-3">
               <div className="px-3">
-                <Grid columns={2} gap={8}>
+                <Grid columns={2} gap={4}>
             <Grid.Item>
-              <div className="text-center p-2 bg-blue-50 rounded-lg">
-                <div className="text-sm font-bold text-blue-700">
+              <div className="text-center px-1 py-8 bg-[#EF5350] rounded-2xl min-w-0 mx-8">
+                <div className="font-bold text-white whitespace-nowrap" style={{ fontSize: 'clamp(12px, 3.6vw, 16px)' }}>
                   {regionAnalysis.regions.length}
                 </div>
-                <div className="text-xs text-gray-600 mt-1 flex items-center justify-center">
+                <div className="text-white mt-0 flex items-center justify-center whitespace-nowrap" style={{ fontSize: 'clamp(10px, 2.4vw, 12px)' }}>
                   <span>覆盖区域</span>
                   <HelpCircle 
-                    className="w-3 h-3 ml-1 text-yellow-500 cursor-pointer hover:text-yellow-600" 
+                    className="w-2.5 h-2.5 ml-1 text-yellow-200 cursor-pointer hover:text-yellow-300" 
                     onClick={(e) => handleMetricHelp('region_coverage', e)}
                   />
                 </div>
               </div>
             </Grid.Item>
             <Grid.Item>
-              <div className="text-center p-2 bg-green-50 rounded-lg">
-                <div className="text-sm font-bold text-green-700">
+              <div className="text-center px-1 py-8 bg-[#FFA726] rounded-2xl min-w-0 mx-8">
+                <div className="font-bold text-white whitespace-nowrap" style={{ fontSize: 'clamp(12px, 3.6vw, 16px)' }}>
                   {formatCurrency(regionAnalysis.regions.reduce((sum, region) => sum + region.revenue, 0))}
                 </div>
-                <div className="text-xs text-gray-600 mt-1 flex items-center justify-center">
+                <div className="text-white mt-0 flex items-center justify-center whitespace-nowrap" style={{ fontSize: 'clamp(10px, 2.4vw, 12px)' }}>
                   <span>总营业额</span>
                   <HelpCircle 
-                    className="w-3 h-3 ml-1 text-yellow-500 cursor-pointer hover:text-yellow-600" 
+                    className="w-2.5 h-2.5 ml-1 text-yellow-200 cursor-pointer hover:text-yellow-300" 
                     onClick={(e) => handleMetricHelp('region_total_revenue', e)}
                   />
                 </div>

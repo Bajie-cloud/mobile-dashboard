@@ -20,45 +20,65 @@ const CorePerformanceSection: React.FC = () => {
     );
   }
 
-
-
-  // 渲染单个指标卡片
+  // 渲染单个指标卡片（自适应字体与不换行）
   const renderMetricCard = (title: string, value: number, changeRate?: number, unit?: string) => {
     const hasChange = changeRate !== undefined;
     const isPositive = hasChange ? isPositiveChange(changeRate) : false;
 
+    // 根据标题选择渐变背景色，参考示例图
+    const gradient =
+      title === '在营门店数'
+        ? 'linear-gradient(135deg, #B45309 0%, #D97706 100%)' // 棕橙
+        : title === '当期总营业额'
+        ? 'linear-gradient(135deg, #9A7B0A 0%, #C49A0A 100%)' // 金棕
+        : 'linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%)'; // 亮黄
+
     return (
-      <div 
-        className="rounded-2xl shadow-sm p-4 text-center"
-        style={{ 
-          background: 'linear-gradient(135deg, #F59E0B 0%, #F97316 100%)',
-          border: 'none'
-        }}
+      <div
+        className="rounded-2xl shadow-md p-3 text-center min-w-0"
+        style={{ background: gradient, border: 'none' }}
       >
-        <div className="text-sm text-white text-opacity-90 mb-2 text-center">
+        <div
+          className="text-white text-center whitespace-nowrap"
+          style={{ fontSize: 'clamp(10px, 2.8vw, 16px)', opacity: 0.95 }}
+        >
           <span>{title}</span>
         </div>
-        <div className="text-2xl font-bold text-white mb-2">
+        <div
+          className="font-bold text-white whitespace-nowrap"
+          style={{ fontSize: 'clamp(18px, 6.0vw, 36px)' }}
+        >
           {typeof value === 'number' && value >= 10000 ? (
             <>
               {(value / 10000).toFixed(1)}
-              <span className="text-sm text-white text-opacity-80 ml-1 font-normal">万</span>
+              <span className="ml-1 font-normal" style={{ fontSize: 'clamp(12px, 2.8vw, 14px)', opacity: 0.85 }}>万</span>
             </>
           ) : (
             <>
               {value.toLocaleString()}
-              {unit && <span className="text-sm text-white text-opacity-80 ml-1 font-normal">{unit}</span>}
+              {unit && (
+                <span className="ml-1 font-normal" style={{ fontSize: 'clamp(12px, 2.8vw, 14px)', opacity: 0.85 }}>
+                  {unit}
+                </span>
+              )}
             </>
           )}
         </div>
         {hasChange && (
-          <div className="flex items-center justify-center text-sm text-white text-opacity-90">
-            {isPositive ? (
-              <TrendingUp className="w-4 h-4 mr-1" />
+          <div className="flex items-center justify-center whitespace-nowrap" style={{ fontSize: 'clamp(10px, 2.4vw, 14px)', color: 'rgba(255,255,255,0.95)' }}>
+            {title === '在营门店数' ? (
+              // 在营门店数显示为 ±xx家
+              <span>{`${changeRate! >= 0 ? '+' : ''}${Math.abs(changeRate!)}家`}</span>
             ) : (
-              <TrendingDown className="w-4 h-4 mr-1" />
+              <>
+                {isPositive ? (
+                  <TrendingUp className="w-4 h-4 mr-1" />
+                ) : (
+                  <TrendingDown className="w-4 h-4 mr-1" />
+                )}
+                <span>{formatChangeRate(changeRate)}</span>
+              </>
             )}
-            <span>{formatChangeRate(changeRate)}</span>
           </div>
         )}
       </div>
@@ -71,7 +91,7 @@ const CorePerformanceSection: React.FC = () => {
       <div className="px-3">
         <h2 className="text-lg font-semibold text-gray-800 mb-3">核心业绩概览</h2>
       </div>
-      
+
       {/* 核心业绩指标卡片 - 3个并排的小卡片 */}
       <div className="mb-3 px-3">
         <Grid columns={3} gap={8}>
@@ -85,7 +105,7 @@ const CorePerformanceSection: React.FC = () => {
           </Grid.Item>
           <Grid.Item>
             {renderMetricCard(
-              '当日总营业额',
+              '当期总营业额',
               corePerformance.totalRevenue.value,
               corePerformance.totalRevenue.changeRate
             )}
@@ -100,7 +120,6 @@ const CorePerformanceSection: React.FC = () => {
           </Grid.Item>
         </Grid>
       </div>
-
     </div>
   );
 };

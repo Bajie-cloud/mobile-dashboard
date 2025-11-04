@@ -4,6 +4,7 @@ import * as echarts from 'echarts';
 import { TrendingUp, TrendingDown } from 'lucide-react';
 import { useDashboardStore } from '../../store/dashboardStore';
 import { formatChangeRate, isPositiveChange } from '../../utils/format';
+import { useNavigate } from 'react-router-dom';
 
 interface ChannelAnalysisSectionProps {
   detailed?: boolean;
@@ -12,6 +13,7 @@ interface ChannelAnalysisSectionProps {
 const ChannelAnalysisSection: React.FC<ChannelAnalysisSectionProps> = () => {
   const { channelAnalysis } = useDashboardStore();
   const chartRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!channelAnalysis || !chartRef.current) return;
@@ -48,7 +50,9 @@ const ChannelAnalysisSection: React.FC<ChannelAnalysisSectionProps> = () => {
           data: [
             { value: channelAnalysis.takeoutRatio, name: '外卖', itemStyle: { color: '#FFA726' } },
             { value: channelAnalysis.dineInRatio, name: '堂食', itemStyle: { color: '#EF5350' } }
-          ]
+          ],
+          selectedMode: 'single',
+          cursor: 'pointer'
         }
       ],
       // 更新 graphic：同一行显示“名称 百分比”，并整体上移一行更贴近饼图
@@ -120,6 +124,15 @@ const ChannelAnalysisSection: React.FC<ChannelAnalysisSectionProps> = () => {
 
     chart.setOption(option);
 
+    // 添加点击事件
+    chart.on('click', function(params: any) {
+      if (params.name === '堂食') {
+        navigate('/channel-analysis?type=dinein');
+      } else if (params.name === '外卖') {
+        navigate('/takeout-platform-detail');
+      }
+    });
+
     const handleResize = () => {
       
       chart.resize();
@@ -131,7 +144,7 @@ const ChannelAnalysisSection: React.FC<ChannelAnalysisSectionProps> = () => {
       window.removeEventListener('resize', handleResize);
       chart.dispose();
     };
-  }, [channelAnalysis]);
+  }, [channelAnalysis, navigate]);
 
   if (!channelAnalysis) {
     return (
@@ -157,9 +170,9 @@ const ChannelAnalysisSection: React.FC<ChannelAnalysisSectionProps> = () => {
     isPositive?: boolean
   ) => (
     <div className={`bg-white rounded-lg border-l-4 ${borderColor} p-2 shadow-sm`}>
-      <div className="text-xs text-black mb-1 leading-tight">{title}</div>
+      <div className="text-[11px] text-black mb-1 leading-tight">{title}</div>
       <div className="text-sm font-bold text-black mb-1 leading-tight">
-        {typeof value === 'number' ? value.toLocaleString() : value}
+        {typeof value === 'number' ? value.toString() : value}
         <span className="text-xs text-black ml-1">{unit}</span>
       </div>
       <div className="flex items-center text-xs leading-tight text-black">
@@ -171,9 +184,13 @@ const ChannelAnalysisSection: React.FC<ChannelAnalysisSectionProps> = () => {
           )
         )}
         <span className="truncate">
-          {changeType === 'rate' 
+          {changeType === 'rate'
             ? (typeof change === 'number' ? formatChangeRate(change) : change)
-            : `变化 ${typeof change === 'number' && change > 0 ? '+' : ''}${change}`
+            : (() => {
+                const numericChange = typeof change === 'number' ? change : parseFloat(change as string);
+                const sign = numericChange > 0 ? '+' : numericChange < 0 ? '-' : '';
+                return `${sign}${Math.abs(numericChange).toString()}${unit || '元'}`;
+              })()
           }
         </span>
       </div>
@@ -235,7 +252,7 @@ const ChannelAnalysisSection: React.FC<ChannelAnalysisSectionProps> = () => {
                   {renderMetricCard(
                     '当期堂食客单价',
                     channelAnalysis.dineInAvgPrice.toFixed(1),
-                    '',
+                    '元',
                     channelAnalysis.dineInAvgPriceChange.toFixed(1),
                     'value',
                     'border-[#EF5350]',
@@ -244,7 +261,7 @@ const ChannelAnalysisSection: React.FC<ChannelAnalysisSectionProps> = () => {
                   {renderMetricCard(
                     '当期外卖客单价',
                     channelAnalysis.takeoutAvgPrice.toFixed(1),
-                    '',
+                    '元',
                     channelAnalysis.takeoutAvgPriceChange.toFixed(1),
                     'value',
                     'border-[#FFA726]',

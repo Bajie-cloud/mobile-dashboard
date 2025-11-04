@@ -7,6 +7,7 @@ import StoreRankingDetail from '../pages/StoreRankingDetail';
 import AlertDetail from '../pages/AlertDetail';
 import StoreDetail from '../pages/StoreDetail';
 import ManagePage from '../pages/ManagePage';
+import TakeoutPlatformDetail from '../pages/TakeoutPlatformDetail';
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +17,14 @@ export const router = createBrowserRouter([
   {
     path: '/channel-analysis',
     element: <ChannelAnalysisDetail />
+  },
+  {
+    path: '/takeout-platform-detail',
+    element: <TakeoutPlatformDetail />
+  },
+  {
+    path: '/takeout-platforms',
+    element: <TakeoutPlatformDetail />
   },
   {
     path: '/region-analysis',

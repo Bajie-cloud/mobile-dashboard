@@ -160,7 +160,7 @@ const AlertSection: React.FC = () => {
     } else if (type.includes('ratio')) {
       return `${value.toFixed(1)}%`;
     } else {
-      return value.toLocaleString();
+      return value.toString();
     }
   };
 

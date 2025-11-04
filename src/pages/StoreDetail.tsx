@@ -122,7 +122,7 @@ const StoreDetail: React.FC = () => {
         trigger: 'axis',
         formatter: (params: any) => {
           const data = params[0];
-          return `${data.name}<br/>营收: ¥${data.value.toLocaleString()}<br/>客流: ${storeData.hourlyData[data.dataIndex].traffic}人`;
+          return `${data.name}<br/>营收: ¥${data.value.toString()}<br/>客流: ${storeData.hourlyData[data.dataIndex].traffic}人`;
         }
       },
       xAxis: {

@@ -129,7 +129,7 @@ const ProductAnalysisSection: React.FC = () => {
                       </div>
                       <div className="text-right">
                         <div className="text-base font-bold text-gray-900">
-                          {product.orderCount.toLocaleString()}份
+                          {product.orderCount}份
                         </div>
                         <div className={`flex items-center text-xs justify-end ${getChangeColorClass(product.revenueChangeRate)}`}>
                           {isPositiveChange(product.revenueChangeRate) ? (
@@ -162,7 +162,7 @@ const ProductAnalysisSection: React.FC = () => {
                       </div>
                       <div className="text-right">
                         <div className="text-base font-bold text-gray-900">
-                          {product.orderCount.toLocaleString()}份
+                          {product.orderCount}份
                         </div>
                         <div className={`flex items-center text-xs justify-end ${getChangeColorClass(product.revenueChangeRate)}`}>
                           {isPositiveChange(product.revenueChangeRate) ? (

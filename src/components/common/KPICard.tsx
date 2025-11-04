@@ -42,7 +42,7 @@ export const KPICard: React.FC<KPICardProps> = ({
         ) : (
           <>
             <div className="text-2xl font-bold text-gray-900 mb-2">
-              {typeof value === 'number' && value >= 10000 ? formatCurrency(value) : value.toLocaleString()}
+              {typeof value === 'number' && value >= 10000 ? formatCurrency(value) : value.toString()}
               {unit && <span className="text-sm text-gray-500 ml-1 font-normal">{unit}</span>}
             </div>
             
@@ -57,7 +57,7 @@ export const KPICard: React.FC<KPICardProps> = ({
                   较昨日 {formatChangeRate(changeRate)}
                   {changeValue !== undefined && (
                     <span className="ml-1 font-normal">
-                      ({isPositive ? '+' : ''}{changeValue > 10000 ? formatCurrency(changeValue) : changeValue.toLocaleString()})
+                      ({isPositive ? '+' : ''}{changeValue > 10000 ? formatCurrency(changeValue) : changeValue.toString()})
                     </span>
                   )}
                 </span>

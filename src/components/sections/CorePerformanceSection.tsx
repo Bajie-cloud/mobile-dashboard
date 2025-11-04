@@ -55,7 +55,7 @@ const CorePerformanceSection: React.FC = () => {
             </>
           ) : (
             <>
-              {value.toLocaleString()}
+              {value.toString()}
               {unit && (
                 <span className="ml-1 font-normal" style={{ fontSize: 'clamp(12px, 2.8vw, 14px)', opacity: 0.85 }}>
                   {unit}

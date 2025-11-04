@@ -1,6 +1,6 @@
 // 格式化数字为千分位
 export const formatNumber = (num: number): string => {
-  return num.toLocaleString('zh-CN');
+  return num.toString();
 };
 
 // 格式化金额
@@ -8,7 +8,7 @@ export const formatCurrency = (amount: number): string => {
   if (amount >= 10000) {
     return `${(amount / 10000).toFixed(1)}万`;
   }
-  return `${amount.toLocaleString('zh-CN')}`;
+  return `${amount.toString()}`;
 };
 
 // 格式化百分比

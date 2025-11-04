@@ -1,0 +1,37 @@
+[
+  {
+    "date": "2024-01-15",
+    "platforms": [
+      {
+        "platform_name": "美团",
+        "turnover": 285600,
+        "orders": 1248,
+        "avg_price": 228.8,
+        "turnover_change_rate": 12.5,
+        "orders_change_rate": 8.3,
+        "avg_price_change_rate": 3.8,
+        "market_share": 53.7
+      },
+      {
+        "platform_name": "饿了么",
+        "turnover": 156800,
+        "orders": 742,
+        "avg_price": 211.3,
+        "turnover_change_rate": -2.1,
+        "orders_change_rate": -1.5,
+        "avg_price_change_rate": -0.6,
+        "market_share": 29.5
+      },
+      {
+        "platform_name": "京东外卖",
+        "turnover": 89600,
+        "orders": 385,
+        "avg_price": 232.7,
+        "turnover_change_rate": 25.8,
+        "orders_change_rate": 18.2,
+        "avg_price_change_rate": 6.4,
+        "market_share": 16.8
+      }
+    ]
+  }
+]

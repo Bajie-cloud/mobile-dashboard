@@ -39,7 +39,9 @@ const RegionAnalysisSection: React.FC = () => {
         },
         formatter: function(params: any) {
           const data = params[0];
-          return `${data.name}<br/>营业额: ${formatCurrency(data.value)}`;
+          const v = data.value;
+          const display = v >= 10000 ? `${(v / 10000).toFixed(1)}万` : v.toFixed(1);
+          return `${data.name}<br/>营业额: ${display}`;
         }
       },
       grid: {
@@ -71,7 +73,7 @@ const RegionAnalysisSection: React.FC = () => {
         type: 'value',
         axisLabel: {
           formatter: function(value: number) {
-            return value >= 10000 ? (value / 10000).toFixed(0) + '万' : value.toString();
+            return value >= 10000 ? (value / 10000).toFixed(1) + '万' : value.toFixed(1);
           },
           fontSize: 10
         },
@@ -108,7 +110,7 @@ const RegionAnalysisSection: React.FC = () => {
             distance: 5,
             formatter: function(params: any) {
               const value = params.value;
-              return value >= 10000 ? (value / 10000).toFixed(0) + '万' : value.toString();
+              return value >= 10000 ? (value / 10000).toFixed(1) + '万' : value.toFixed(1);
             },
             fontSize: 10,
             color: '#374151',
@@ -254,7 +256,7 @@ const RegionAnalysisSection: React.FC = () => {
                         />
                       </div>
                       <div className="text-sm font-bold text-gray-900">
-                        {formatCurrency(region.avgStoreRevenue)}
+                        {region.avgStoreRevenue >= 10000 ? `${formatCurrency(region.avgStoreRevenue)}元` : `${region.avgStoreRevenue.toFixed(1)}元`}
                       </div>
                     </div>
                   </Grid.Item>

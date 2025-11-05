@@ -33,6 +33,29 @@ const CorePerformanceSection: React.FC = () => {
         ? 'linear-gradient(135deg, #9A7B0A 0%, #C49A0A 100%)' // 金棕
         : 'linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%)'; // 亮黄
 
+    // 动态字体：在营门店数根据位数缩小
+    const activeStoreValueStr = Math.round(value).toString();
+    const amountFontSize =
+      value >= 100000 ? 'clamp(16px, 5vw, 30px)' :
+      value >= 10000 ? 'clamp(17px, 5.5vw, 33px)' :
+      'clamp(18px, 6vw, 36px)';
+    const storeAvgFontSize =
+      value >= 5000 ? 'clamp(15px, 4.5vw, 28px)' :
+      value >= 3000 ? 'clamp(16px, 5vw, 30px)' :
+      value >= 2000 ? 'clamp(17px, 5.5vw, 33px)' :
+      'clamp(18px, 6vw, 36px)';
+    const valueFontSize = title === '在营门店数'
+      ? (activeStoreValueStr.length >= 6
+          ? 'clamp(16px, 5vw, 30px)'
+          : activeStoreValueStr.length >= 4
+            ? 'clamp(17px, 5.5vw, 33px)'
+            : 'clamp(18px, 6vw, 36px)')
+      : title === '当期总营业额'
+        ? amountFontSize
+        : title === '当期店均营业额'
+          ? storeAvgFontSize
+          : 'clamp(18px, 6.0vw, 36px)';
+
     return (
       <div
         className="rounded-2xl shadow-md p-3 text-center min-w-0"
@@ -46,16 +69,25 @@ const CorePerformanceSection: React.FC = () => {
         </div>
         <div
           className="font-bold text-white whitespace-nowrap"
-          style={{ fontSize: 'clamp(18px, 6.0vw, 36px)' }}
+          style={{ fontSize: valueFontSize }}
         >
-          {typeof value === 'number' && value >= 10000 ? (
+          {title === '在营门店数' ? (
+            <>
+              {activeStoreValueStr}
+              {unit && (
+                <span className="ml-1 font-normal" style={{ fontSize: 'clamp(12px, 2.8vw, 14px)', opacity: 0.85 }}>
+                  {unit}
+                </span>
+              )}
+            </>
+          ) : typeof value === 'number' && value >= 10000 ? (
             <>
               {(value / 10000).toFixed(1)}
               <span className="ml-1 font-normal" style={{ fontSize: 'clamp(12px, 2.8vw, 14px)', opacity: 0.85 }}>万</span>
             </>
           ) : (
             <>
-              {value.toString()}
+              {value.toFixed(1)}
               {unit && (
                 <span className="ml-1 font-normal" style={{ fontSize: 'clamp(12px, 2.8vw, 14px)', opacity: 0.85 }}>
                   {unit}
@@ -112,7 +144,7 @@ const CorePerformanceSection: React.FC = () => {
           </Grid.Item>
           <Grid.Item>
             {renderMetricCard(
-              '日店均营业额',
+              '当期店均营业额',
               corePerformance.avgStoreRevenue.value,
               corePerformance.avgStoreRevenue.changeRate,
               '元'

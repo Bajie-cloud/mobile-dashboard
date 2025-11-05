@@ -155,12 +155,26 @@ const AlertSection: React.FC = () => {
   };
 
   const formatValue = (type: string, value: number) => {
-    if (type.includes('revenue') && !type.includes('ratio')) {
-      return formatCurrency(value);
+    if (type === 'dine_in_traffic_drop') {
+      return `${Math.round(value)}人次`;
+    } else if (type === 'takeout_orders_drop') {
+      return `${Math.round(value)}单`;
+    } else if (type.includes('revenue') && !type.includes('ratio')) {
+      return value >= 10000 ? `${(value / 10000).toFixed(1)}万元` : `${value.toFixed(1)}元`;
     } else if (type.includes('ratio')) {
       return `${value.toFixed(1)}%`;
     } else {
-      return value.toString();
+      return `${Math.round(value)}`;
+    }
+  };
+
+  const formatThreshold = (type: string, value: number) => {
+    if (type.includes('ratio') || type.includes('drop')) {
+      return `${value.toFixed(1)}%`;
+    } else if (type.includes('revenue')) {
+      return value >= 10000 ? `${(value / 10000).toFixed(1)}万元` : `${value.toFixed(1)}元`;
+    } else {
+      return `${Math.round(value)}`;
     }
   };
 
@@ -209,11 +223,11 @@ const AlertSection: React.FC = () => {
                       <span className="text-xs">{alert.region}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                       <span className="text-xs text-gray-600">当前值</span>
-                       <span className="text-xs font-medium">
-                         {formatValue(alert.type, alert.currentValue)}
-                       </span>
-                     </div>
+                      <span className="text-xs text-gray-600">当前值</span>
+                      <span className="text-xs font-medium">
+                        {formatValue(alert.type, alert.currentValue)}
+                      </span>
+                    </div>
                     <div className="flex justify-between items-center">
                       <span className="text-xs text-gray-600">变化幅度</span>
                       <span className="text-xs font-medium text-red-600">

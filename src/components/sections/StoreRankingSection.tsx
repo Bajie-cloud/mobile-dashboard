@@ -79,8 +79,7 @@ const StoreRankingSection: React.FC = () => {
                 {storeRanking.topStores.slice(0, 10).map((store, index) => (
                   <div 
                     key={store.id}
-                    className="flex items-center justify-between p-2 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100"
-                    onClick={() => navigate(`/store/${store.id}`)}
+                    className="flex items-center justify-between p-2 bg-gray-50 rounded-lg"
                   >
                     <div className="flex items-center space-x-3 flex-1">
                       <div className="flex items-center space-x-1">
@@ -119,8 +118,7 @@ const StoreRankingSection: React.FC = () => {
                 {bottomStores.map((store) => (
                   <div 
                     key={store.id}
-                    className="flex items-center justify-between p-2 bg-red-50 rounded-lg cursor-pointer hover:bg-red-100"
-                    onClick={() => navigate(`/store/${store.id}`)}
+                    className="flex items-center justify-between p-2 bg-red-50 rounded-lg"
                   >
                     <div className="flex items-center space-x-3 flex-1">
                       <div className="flex items-center space-x-1">

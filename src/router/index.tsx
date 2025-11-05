@@ -14,10 +14,7 @@ export const router = createBrowserRouter([
     path: '/',
     element: <Dashboard />
   },
-  {
-    path: '/channel-analysis',
-    element: <ChannelAnalysisDetail />
-  },
+
   {
     path: '/takeout-platform-detail',
     element: <TakeoutPlatformDetail />
@@ -42,10 +39,7 @@ export const router = createBrowserRouter([
     path: '/store-ranking',
     element: <StoreRankingDetail />
   },
-  {
-    path: '/alert',
-    element: <AlertDetail />
-  },
+
   {
     path: '/store/:storeId',
     element: <StoreDetail />

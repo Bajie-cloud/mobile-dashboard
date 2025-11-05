@@ -61,33 +61,33 @@ const RegionAnalysisDetail: React.FC = () => {
         <Card className="shadow-sm">
           <div className="p-4">
             <div className="flex items-center mb-3">
-              <MapPin className="w-5 h-5 text-primary-500 mr-2" />
+              <MapPin className="w-5 h-5 text-yellow-600 mr-2" />
               <h2 className="text-lg font-semibold text-gray-900">{decodedRegionName}</h2>
             </div>
             
             <Grid columns={3} gap={12}>
               <Grid.Item>
-                <div className="text-center p-3 bg-blue-50 rounded-lg">
-                  <div className="text-lg font-bold text-blue-600">
+                <div className="text-center p-3 rounded-lg" style={{ background: 'linear-gradient(135deg, #B45309 0%, #D97706 100%)' }}>
+                  <div className="text-lg font-bold text-white">
                     {stores.length}
                   </div>
-                  <div className="text-xs text-gray-600 mt-1">门店数量</div>
+                  <div className="text-xs text-white mt-1">门店数量</div>
                 </div>
               </Grid.Item>
               <Grid.Item>
-                <div className="text-center p-3 bg-green-50 rounded-lg">
-                  <div className="text-lg font-bold text-green-600">
+                <div className="text-center p-3 rounded-lg" style={{ background: 'linear-gradient(135deg, #9A7B0A 0%, #C49A0A 100%)' }}>
+                  <div className="text-lg font-bold text-white">
                     {formatCurrency(totalRevenue)}
                   </div>
-                  <div className="text-xs text-gray-600 mt-1">总营业额</div>
+                  <div className="text-xs text-white mt-1">总营业额</div>
                 </div>
               </Grid.Item>
               <Grid.Item>
-                <div className="text-center p-3 bg-purple-50 rounded-lg">
-                  <div className="text-lg font-bold text-purple-600">
-                    {formatCurrency(avgRevenue)}
+                <div className="text-center p-3 rounded-lg" style={{ background: 'linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%)' }}>
+                  <div className="text-lg font-bold text-white">
+                    {avgRevenue >= 10000 ? `${(avgRevenue / 10000).toFixed(1)}万` : `${avgRevenue.toFixed(1)}`}
                   </div>
-                  <div className="text-xs text-gray-600 mt-1">平均营业额</div>
+                  <div className="text-xs text-white mt-1">店均营业额</div>
                 </div>
               </Grid.Item>
             </Grid>
@@ -108,16 +108,16 @@ const RegionAnalysisDetail: React.FC = () => {
                   {/* 主要信息：门店名称和营业额 */}
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center space-x-3">
-                      <div className="flex items-center justify-center w-10 h-10 bg-primary-100 rounded-full">
-                        <Store className="w-5 h-5 text-primary-600" />
+                      <div className="flex items-center justify-center w-10 h-10 bg-yellow-100 rounded-full">
+                        <Store className="w-5 h-5 text-yellow-600" />
                       </div>
                       <div>
                         <div className="text-lg font-bold text-gray-900">{store.name}</div>
-                        <div className="text-sm text-primary-600 font-medium">#{index + 1} 排名</div>
+                        <div className="text-sm text-yellow-600 font-medium">#{index + 1} 排名</div>
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-xl font-bold text-green-600">
+                      <div className="text-xl font-bold text-gray-900">
                         {formatCurrency(store.revenue)}
                       </div>
                       <div className="text-sm text-gray-600 font-medium">营业额</div>
@@ -133,7 +133,7 @@ const RegionAnalysisDetail: React.FC = () => {
                         <span>{store.city}</span>
                       </div>
                       <div className="flex items-center">
-                        <MapPin className="w-3 h-3 mr-1" />
+                        <MapPin className="w-3 h-3 mr-1 text-yellow-600" />
                         <span className="truncate max-w-32">{store.address}</span>
                       </div>
                     </div>

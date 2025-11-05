@@ -50,7 +50,13 @@ const TakeoutPlatformDetail: React.FC = () => {
   }, []);
 
   // 渲染单个指标卡片（与首页核心业绩概览保持一致的小卡片样式）
-  const renderMetricCard = (title: string, value: string | number, unit: string, changeRate: number) => {
+  const renderMetricCard = (
+    title: string,
+    value: string | number,
+    unit: string,
+    changeRate: number,
+    changeType: 'rate' | 'value' = 'rate'
+  ) => {
     // 根据标题选择渐变背景色，与首页保持一致
     const gradient =
       title === '营业额'
@@ -58,7 +64,7 @@ const TakeoutPlatformDetail: React.FC = () => {
         : title === '堂食客流' || title === '订单数'
         ? 'linear-gradient(135deg, #9A7B0A 0%, #C49A0A 100%)' // 金棕
         : 'linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%)'; // 亮黄
-
+  
     return (
       <div
         className="rounded-2xl shadow-md p-3 text-center min-w-0"
@@ -93,15 +99,23 @@ const TakeoutPlatformDetail: React.FC = () => {
         {changeRate !== 0 && (
           <div className="flex items-center justify-center whitespace-nowrap" style={{ fontSize: 'clamp(10px, 2.4vw, 14px)', color: 'rgba(255,255,255,0.95)' }}>
             {changeRate > 0 ? (
-              <>
-                <TrendingUp className="w-4 h-4 mr-1" />
-                <span>+{changeRate.toFixed(1)}%</span>
-              </>
+              <TrendingUp className="w-4 h-4 mr-1" />
             ) : (
-              <>
-                <TrendingDown className="w-4 h-4 mr-1" />
-                <span>{changeRate.toFixed(1)}%</span>
-              </>
+              <TrendingDown className="w-4 h-4 mr-1" />
+            )}
+            {changeType === 'value' ? (
+              <span>
+                {(changeRate > 0 ? '+' : changeRate < 0 ? '-' : '')}
+                {(() => {
+                  const base = typeof value === 'number' ? value : parseFloat(String(value));
+                  const delta = Number(((Math.abs(base) * Math.abs(changeRate)) / 100).toFixed(1));
+                  return `${delta}`;
+                })()}元
+              </span>
+            ) : (
+              <span>
+                {(changeRate > 0 ? '+' : '')}{changeRate.toFixed(1)}%
+              </span>
             )}
           </div>
         )}
@@ -129,7 +143,7 @@ const TakeoutPlatformDetail: React.FC = () => {
       <div className="p-4 space-y-6">
         {/* 堂食数据区域 */}
         <div>
-          <h3 className="text-lg font-semibold text-gray-800 mb-3 px-3">堂食渠道</h3>
+          <h3 className="text-lg font-semibold text-gray-800 mb-3 px-3">堂食</h3>
           <div className="px-3">
             <Grid columns={3} gap={8}>
               <Grid.Item>
@@ -153,7 +167,8 @@ const TakeoutPlatformDetail: React.FC = () => {
                   '堂食客单价', 
                   channelData.dineInAvgPrice, 
                   '元', 
-                  channelData.dineInAvgPriceChange
+                  channelData.dineInAvgPriceChange,
+                  'value'
                 )}
               </Grid.Item>
             </Grid>
@@ -162,7 +177,7 @@ const TakeoutPlatformDetail: React.FC = () => {
 
         {/* 外卖渠道数据区域 */}
         <div>
-          <h3 className="text-lg font-semibold text-gray-800 mb-3 px-3">外卖渠道</h3>
+          <h3 className="text-lg font-semibold text-gray-800 mb-3 px-3">外卖</h3>
           <div className="px-3 space-y-4">
             {/* 美团 */}
             <div>
@@ -180,7 +195,7 @@ const TakeoutPlatformDetail: React.FC = () => {
                         {renderMetricCard('订单数', platformData.meituan.orders, '单', platformData.meituan.ordersChange)}
                       </Grid.Item>
                       <Grid.Item>
-                        {renderMetricCard('客单价', platformData.meituan.avgPrice, '元', platformData.meituan.avgPriceChange)}
+                        {renderMetricCard('客单价', platformData.meituan.avgPrice, '元', platformData.meituan.avgPriceChange, 'value')}
                       </Grid.Item>
                     </>
                   )}
@@ -204,7 +219,7 @@ const TakeoutPlatformDetail: React.FC = () => {
                         {renderMetricCard('订单数', platformData.eleme.orders, '单', platformData.eleme.ordersChange)}
                       </Grid.Item>
                       <Grid.Item>
-                        {renderMetricCard('客单价', platformData.eleme.avgPrice, '元', platformData.eleme.avgPriceChange)}
+                        {renderMetricCard('客单价', platformData.eleme.avgPrice, '元', platformData.eleme.avgPriceChange, 'value')}
                       </Grid.Item>
                     </>
                   )}
@@ -215,7 +230,7 @@ const TakeoutPlatformDetail: React.FC = () => {
             {/* 京东到家 */}
             <div>
               <div className="text-left mb-2">
-                <h4 className="text-md font-semibold text-gray-700">京东到家</h4>
+                <h4 className="text-md font-semibold text-gray-700">京东</h4>
               </div>
               <div className="px-3">
                 <Grid columns={3} gap={8}>
@@ -228,7 +243,7 @@ const TakeoutPlatformDetail: React.FC = () => {
                         {renderMetricCard('订单数', platformData.jingdong.orders, '单', platformData.jingdong.ordersChange)}
                       </Grid.Item>
                       <Grid.Item>
-                        {renderMetricCard('客单价', platformData.jingdong.avgPrice, '元', platformData.jingdong.avgPriceChange)}
+                        {renderMetricCard('客单价', platformData.jingdong.avgPrice, '元', platformData.jingdong.avgPriceChange, 'value')}
                       </Grid.Item>
                     </>
                   )}

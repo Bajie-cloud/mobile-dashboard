@@ -125,12 +125,8 @@ const ChannelAnalysisSection: React.FC<ChannelAnalysisSectionProps> = () => {
     chart.setOption(option);
 
     // 添加点击事件
-    chart.on('click', function(params: any) {
-      if (params.name === '堂食') {
-        navigate('/channel-analysis?type=dinein');
-      } else if (params.name === '外卖') {
-        navigate('/takeout-platform-detail');
-      }
+    chart.on('click', function() {
+      navigate('/takeout-platform-detail');
     });
 
     const handleResize = () => {

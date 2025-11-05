@@ -1,10 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Dashboard from '../pages/Dashboard';
-import ChannelAnalysisDetail from '../pages/ChannelAnalysisDetail';
 import RegionAnalysisDetail from '../pages/RegionAnalysisDetail';
 import ProductAnalysisDetail from '../pages/ProductAnalysisDetail';
 import StoreRankingDetail from '../pages/StoreRankingDetail';
-import AlertDetail from '../pages/AlertDetail';
 import StoreDetail from '../pages/StoreDetail';
 import ManagePage from '../pages/ManagePage';
 import TakeoutPlatformDetail from '../pages/TakeoutPlatformDetail';

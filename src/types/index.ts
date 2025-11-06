@@ -124,7 +124,7 @@ export interface ChartData {
   color?: string;
 }
 
-// 环比数据类型
+// 同比数据类型
 export interface ChangeData {
   value: number;
   changeRate: number;

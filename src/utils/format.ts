@@ -16,13 +16,13 @@ export const formatPercentage = (rate: number, decimals: number = 1): string => 
   return `${rate.toFixed(decimals)}%`;
 };
 
-// 格式化环比数据
+// 格式化同比数据
 export const formatChangeRate = (rate: number, showSign: boolean = true): string => {
   const sign = showSign && rate > 0 ? '+' : '';
   return `${sign}${rate.toFixed(1)}%`;
 };
 
-// 格式化环比变化值
+// 格式化同比变化值
 export const formatChangeValue = (value: number, showSign: boolean = true): string => {
   const sign = showSign && value > 0 ? '+' : '';
   return `${sign}${formatNumber(value)}`;
@@ -33,7 +33,7 @@ export const isPositiveChange = (value: number): boolean => {
   return value > 0;
 };
 
-// 获取环比变化的颜色类名
+// 获取同比变化的颜色类名
 export const getChangeColorClass = (value: number): string => {
   if (value > 0) {
     return 'text-success-600';
@@ -43,7 +43,7 @@ export const getChangeColorClass = (value: number): string => {
   return 'text-gray-600';
 };
 
-// 获取环比变化的背景色类名
+// 获取同比变化的背景色类名
 export const getChangeBgColorClass = (value: number): string => {
   if (value > 0) {
     return 'bg-success-50';

@@ -2,8 +2,8 @@ import React, { useRef, useEffect, useState } from 'react';
 import { Card, Tabs } from 'antd-mobile';
 import * as echarts from 'echarts';
 import { useDashboardStore } from '../../store/dashboardStore';
-import { formatChangeRate, getChangeColorClass, isPositiveChange } from '../../utils/format';
-import { TrendingUp, TrendingDown, Package, Award, HelpCircle } from 'lucide-react';
+
+import { Package, Award, HelpCircle } from 'lucide-react';
 import MetricDefinitionModal from '../common/MetricDefinitionModal';
 import { MetricDefinition, getMetricDefinition } from '../../data/metricDefinitions';
 
@@ -131,14 +131,7 @@ const ProductAnalysisSection: React.FC = () => {
                         <div className="text-base font-bold text-gray-900">
                           {product.orderCount}份
                         </div>
-                        <div className={`flex items-center text-xs justify-end ${getChangeColorClass(product.revenueChangeRate)}`}>
-                          {isPositiveChange(product.revenueChangeRate) ? (
-                            <TrendingUp className="w-3 h-3 mr-0.5" />
-                          ) : (
-                            <TrendingDown className="w-3 h-3 mr-0.5" />
-                          )}
-                          <span>{formatChangeRate(product.revenueChangeRate)}</span>
-                        </div>
+                        {/* 移除增长趋势显示 */}
                       </div>
                     </div>
                   </div>
@@ -164,14 +157,7 @@ const ProductAnalysisSection: React.FC = () => {
                         <div className="text-base font-bold text-gray-900">
                           {product.orderCount}份
                         </div>
-                        <div className={`flex items-center text-xs justify-end ${getChangeColorClass(product.revenueChangeRate)}`}>
-                          {isPositiveChange(product.revenueChangeRate) ? (
-                            <TrendingUp className="w-3 h-3 mr-0.5" />
-                          ) : (
-                            <TrendingDown className="w-3 h-3 mr-0.5" />
-                          )}
-                          <span>{formatChangeRate(product.revenueChangeRate)}</span>
-                        </div>
+                        {/* 移除增长趋势显示 */}
                       </div>
                     </div>
                   </div>

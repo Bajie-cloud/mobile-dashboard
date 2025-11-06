@@ -151,7 +151,7 @@ const TakeoutPlatformDetail: React.FC = () => {
                   '营业额', 
                   channelData.dineInAvgPrice * channelData.dineInTraffic, 
                   '元', 
-                  15.2 // 模拟堂食营业额环比数据
+                  15.2 // 模拟堂食营业额同比数据
                 )}
               </Grid.Item>
               <Grid.Item>

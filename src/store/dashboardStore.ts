@@ -16,6 +16,32 @@ interface SectionSetting {
   order: number;
 }
 
+export interface ThemeColors {
+  // 主色调
+  primary: string;
+  // 辅助色
+  secondary1: string;
+  secondary2: string;
+  secondary3: string;
+  // 功能色
+  success: string;
+  warning: string;
+  danger: string;
+  // 背景色
+  cardBackground: string;
+  pageBackground: string;
+  // 文字色
+  textPrimary: string;
+  textSecondary: string;
+  textTertiary: string;
+  // 渐变色
+  gradientRevenue: string;
+  gradientTraffic: string;
+  gradientHighlight: string;
+  // 图表色
+  chartColors: string[];
+}
+
 interface DashboardState {
   // 数据状态
   corePerformance: CorePerformance | null;
@@ -41,6 +67,9 @@ interface DashboardState {
   // 页面指标管理
   sectionSettings: SectionSetting[];
   
+  // 主题颜色
+  themeColors: ThemeColors;
+  
   // 操作方法
   setSelectedDate: (date: string) => void;
   loadCorePerformance: () => Promise<void>;
@@ -52,7 +81,36 @@ interface DashboardState {
   loadAllData: () => Promise<void>;
   updateSectionSettings: (sectionId: string, updates: Partial<SectionSetting>) => void;
   reorderSections: (fromIndex: number, toIndex: number) => void;
+  updateThemeColors: (colors: Partial<ThemeColors>) => void;
+  resetThemeColors: () => void;
 }
+
+// 默认主题颜色
+const defaultThemeColors: ThemeColors = {
+  // 主色调
+  primary: '#3b82f6',
+  // 辅助色
+  secondary1: '#f59e0b',
+  secondary2: '#10b981',
+  secondary3: '#8b5cf6',
+  // 功能色
+  success: '#22c55e',
+  warning: '#f59e0b',
+  danger: '#ef4444',
+  // 背景色
+  cardBackground: '#ffffff',
+  pageBackground: '#f9fafb',
+  // 文字色
+  textPrimary: '#111827',
+  textSecondary: '#6b7280',
+  textTertiary: '#9ca3af',
+  // 渐变色
+  gradientRevenue: 'linear-gradient(135deg, #B45309 0%, #D97706 100%)',
+  gradientTraffic: 'linear-gradient(135deg, #9A7B0A 0%, #C49A0A 100%)',
+  gradientHighlight: 'linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%)',
+  // 图表色
+  chartColors: ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6']
+};
 
 export const useDashboardStore = create<DashboardState>((set, get) => ({
   // 初始数据状态
@@ -85,6 +143,9 @@ export const useDashboardStore = create<DashboardState>((set, get) => ({
     { id: 'storeRanking', name: '门店排行', enabled: true, order: 4 },
     { id: 'alertSection', name: '异常预警', enabled: true, order: 5 },
   ],
+  
+  // 主题颜色
+  themeColors: defaultThemeColors,
   
   // 设置选择的日期
   setSelectedDate: (date: string) => {
@@ -247,5 +308,17 @@ export const useDashboardStore = create<DashboardState>((set, get) => ({
         }))
       };
     });
+  },
+  
+  // 更新主题颜色
+  updateThemeColors: (colors: Partial<ThemeColors>) => {
+    set((state) => ({
+      themeColors: { ...state.themeColors, ...colors }
+    }));
+  },
+  
+  // 重置主题颜色
+  resetThemeColors: () => {
+    set({ themeColors: defaultThemeColors });
   },
 }));

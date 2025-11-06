@@ -54,7 +54,7 @@ export const KPICard: React.FC<KPICardProps> = ({
                   <TrendingDown className="w-4 h-4 mr-1 flex-shrink-0" />
                 )}
                 <span className="font-medium">
-                  较昨日 {formatChangeRate(changeRate)}
+                  较上期 {formatChangeRate(changeRate)}
                   {changeValue !== undefined && (
                     <span className="ml-1 font-normal">
                       ({isPositive ? '+' : ''}{changeValue > 10000 ? formatCurrency(changeValue) : changeValue.toString()})

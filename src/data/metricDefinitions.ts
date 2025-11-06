@@ -113,21 +113,21 @@ export const metricDefinitions: MetricDefinition[] = [
   {
     id: 'revenue_drop_alert',
     name: '门店当期总营业额降幅预警',
-    definition: '门店当期总营业额同比昨日降幅50%',
+    definition: '门店当期总营业额同比上期降幅50%',
     algorithm: '/',
     category: '异常预警'
   },
   {
     id: 'traffic_drop_alert',
     name: '门店当期堂食客流降幅预警',
-    definition: '门店当期堂食来客同比昨日降幅50%',
+    definition: '门店当期堂食来客同比上期降幅50%',
     algorithm: '/',
     category: '异常预警'
   },
   {
     id: 'takeout_orders_drop_alert',
     name: '门店当期外卖订单数降幅预警',
-    definition: '门店当期外卖订单数同比昨日降幅50%',
+    definition: '门店当期外卖订单数同比上期降幅50%',
     algorithm: '/',
     category: '异常预警'
   },

@@ -80,7 +80,7 @@ export const getTodayString = (): string => {
   return new Date().toISOString().split('T')[0];
 };
 
-// 获取昨日日期字符串
+// 获取上期日期字符串
 export const getYesterdayString = (): string => {
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);

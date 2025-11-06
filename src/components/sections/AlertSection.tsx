@@ -193,7 +193,6 @@ const AlertSection: React.FC = () => {
                   onClick={(e) => handleMetricHelp('anomaly_warning', e)}
                 />
               </div>
-              <span className="text-xs text-yellow-600">实时监控</span>
             </div>
             
             <div className="-mx-3">
